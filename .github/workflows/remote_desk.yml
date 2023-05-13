@@ -37,7 +37,3 @@ jobs:
         sleep 2
         NGROK_URL=$(curl -sS http://localhost:4040/api/tunnels | jq -r .tunnels[0].public_url)
         echo "VNC Server URL: $NGROK_URL"
-        curl -sSX POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} -d text="VNC Server URL: $NGROK_URL"
-      env:
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
